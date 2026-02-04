@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * DESIGN SYSTEM - Studio Dentistico Odonto Bi Srl
+ * Palette: Elegant Navy (bianco + blu notte + accento oro tenue)
+ * Font: System fonts only (no Google Fonts)
+ */
+
+@layer base {
+  :root {
+    /* Elegant Navy Palette */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Blu notte principale */
+    --primary: 222 47% 20%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Grigio chiaro per superfici secondarie */
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 222 47% 15%;
+
+    /* Muted - grigio leggero */
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Accent - oro tenue */
+    --accent: 38 65% 50%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Bordi */
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 222 47% 20%;
+
+    --radius: 0.625rem;
+
+    /* CTA Gradient - oro elegante */
+    --gradient-cta-start: 222 47% 20%;
+    --gradient-cta-end: 222 50% 15%;
+
+    /* Soft shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(222 47% 11% / 0.08);
+    --shadow-card: 0 8px 30px -8px hsl(222 47% 11% / 0.12);
+    --shadow-hover: 0 12px 40px -8px hsl(222 47% 20% / 0.18);
+
+    /* Typography */
+    --font-heading: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 222 47% 20%;
+    --sidebar-primary: 222 47% 20%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 96%;
+    --sidebar-accent-foreground: 222 47% 15%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 222 47% 20%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 0 0% 96%;
+
+    --card: 222 47% 10%;
+    --card-foreground: 0 0% 96%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 38 65% 55%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 222 40% 15%;
+    --secondary-foreground: 0 0% 92%;
+
+    --muted: 222 40% 15%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 38 60% 50%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 40% 18%;
+    --input: 222 40% 18%;
+    --ring: 38 65% 55%;
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 0 0% 92%;
+    --sidebar-primary: 38 65% 55%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 222 40% 15%;
+    --sidebar-accent-foreground: 0 0% 92%;
+    --sidebar-border: 222 40% 18%;
+    --sidebar-ring: 38 65% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Soft card shadows */
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-shadow-hover {
+    transition: box-shadow 300ms ease-out, transform 300ms ease-out;
+  }
+
+  .card-shadow-hover:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  /* CTA Gradient */
+  .gradient-cta {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-cta-start)) 0%,
+      hsl(var(--gradient-cta-end)) 100%
+    );
+  }
+
+  .gradient-cta:hover {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-cta-end)) 0%,
+      hsl(var(--gradient-cta-start)) 100%
+    );
+  }
+}
+
+@layer utilities {
+  /* Fade-in animation */
+  .animate-fade-in {
+    animation: fadeIn 300ms ease-out forwards;
+    opacity: 0;
+  }
+
+  /* Slide-up animation */
+  .animate-slide-up {
+    animation: slideUp 300ms ease-out forwards;
+    opacity: 0;
+  }
+
+  /* Staggered animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
