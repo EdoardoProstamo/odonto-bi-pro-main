@@ -41,7 +41,7 @@ export function CTASection() {
               asChild
               size="lg"
               variant="outline"
-              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
+              className="bg-background text-foreground hover:bg-background/90"
             >
               <Link to="/contatti">
                 Come raggiungerci
